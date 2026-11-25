@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Task 7.1 – Eight HTML5 Canvas Arts</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 28px 16px 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #203047; background: #f3f6fb;
+  }
+  header { max-width: 920px; margin: 0 auto 26px; text-align: center; }
+  h1 { margin: 0 0 8px; font-size: clamp(23px, 5vw, 32px); color: #172b4d; }
+  header p { margin: 0; color: #63738a; line-height: 1.5; }
+  .gallery {
+    max-width: 920px; margin: auto;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+  }
+  .art-card {
+    background: white; border-radius: 18px; padding: 17px;
+    box-shadow: 0 5px 18px rgba(31, 53, 83, .08);
+    text-align: center;
+  }
+  canvas {
+    width: 200px; height: 200px; max-width: 100%;
+    display: block; margin: 0 auto 12px;
+    border-radius: 12px;
+  }
+  h2 { margin: 0 0 5px; font-size: 17px; color: #203b63; }
+  .art-card p { margin: 0; color: #78869a; font-size: 13px; }
+  footer { max-width: 920px; margin: 24px auto 0; text-align: center; color: #8793a4; font-size: 12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>My Eight HTML5 Canvas Arts</h1>
+  <p>Learning Task 7.1 · Each illustration is drawn on a 200 × 200 canvas using JavaScript.</p>
+</header>
+
+<main class="gallery">
+  <section class="art-card"><canvas id="rocket" width="200" height="200"></canvas><h2>1. Rocket</h2><p>Shapes, curves and stars</p></section>
+  <section class="art-card"><canvas id="house" width="200" height="200"></canvas><h2>2. Little House</h2><p>Rectangles, roof and windows</p></section>
+  <section class="art-card"><canvas id="flower" width="200" height="200"></canvas><h2>3. Flower</h2><p>Circles, petals and lines</p></section>
+  <section class="art-card"><canvas id="fish" width="200" height="200"></canvas><h2>4. Goldfish</h2><p>Curves, fins and bubbles</p></section>
+  <section class="art-card"><canvas id="robot" width="200" height="200"></canvas><h2>5. Friendly Robot</h2><p>Rounded shapes and details</p></section>
+  <section class="art-card"><canvas id="mountain" width="200" height="200"></canvas><h2>6. Mountain View</h2><p>Layered paths and scenery</p></section>
+  <section class="art-card"><canvas id="balloon" width="200" height="200"></canvas><h2>7. Hot Air Balloon</h2><p>Gradient, curves and basket</p></section>
+  <section class="art-card"><canvas id="cactus" width="200" height="200"></canvas><h2>8. Cactus</h2><p>Curved paths and small accents</p></section>
+</main>
+<footer>Created with HTML5 Canvas and JavaScript</footer>
+
+<script>
+const get = id => document.getElementById(id).getContext("2d");
+function bg(ctx, color) { ctx.fillStyle = color; ctx.fillRect(0, 0, 200, 200); }
+function star(ctx, x, y, r, color) {
+  ctx.save(); ctx.translate(x, y); ctx.fillStyle = color; ctx.beginPath();
+  for (let i=0;i<10;i++) { const a=-Math.PI/2+i*Math.PI/5, rr=i%2===0?r:r*.42; const px=Math.cos(a)*rr, py=Math.sin(a)*rr; i===0?ctx.moveTo(px,py):ctx.lineTo(px,py); }
+  ctx.closePath(); ctx.fill(); ctx.restore();
+}
+
+// 1. Rocket
+{
+ const c=get("rocket"); bg(c,"#eaf5ff");
+ c.fillStyle="#d4e9fa"; c.beginPath(); c.arc(34,36,18,0,Math.PI*2); c.fill();
+ star(c,35,125,8,"#f6bd4b"); star(c,165,43,9,"#f6bd4b"); star(c,155,145,6,"#f6bd4b");
+ c.fillStyle="#536b9b"; c.beginPath(); c.moveTo(100,22); c.quadraticCurveTo(151,65,123,143); c.lineTo(77,143); c.quadraticCurveTo(49,65,100,22); c.fill();
+ c.fillStyle="#f26b6b"; c.beginPath(); c.moveTo(78,111); c.lineTo(48,151); c.lineTo(82,140); c.fill(); c.beginPath(); c.moveTo(122,111); c.lineTo(152,151); c.lineTo(118,140); c.fill();
+ c.fillStyle="#f7c65b"; c.beginPath(); c.moveTo(88,140); c.lineTo(100,184); c.lineTo(112,140); c.closePath(); c.fill();
+ c.fillStyle="#bde8f7"; c.beginPath(); c.arc(100,83,17,0,Math.PI*2); c.fill(); c.strokeStyle="#fff"; c.lineWidth=5; c.stroke();
+ c.fillStyle="#fff"; c.beginPath(); c.arc(94,77,5,0,Math.PI*2); c.fill();
+}
+
+// 2. Little house
+{
+ const c=get("house"); bg(c,"#e9f7f1");
+ c.fillStyle="#f7d88a"; c.beginPath(); c.arc(158,38,19,0,Math.PI*2); c.fill();
+ c.fillStyle="#fff"; c.fillRect(35,91,130,82);
+ c.fillStyle="#e87962"; c.beginPath(); c.moveTo(23,96); c.lineTo(100,31); c.lineTo(177,96); c.closePath(); c.fill();
+ c.fillStyle="#b85d4e"; c.fillRect(86,124,31,49);
+ c.fillStyle="#8ec5d7"; c.fillRect(48,108,27,27); c.fillRect(127,108,27,27);
+ c.strokeStyle="#fff"; c.lineWidth=3; c.beginPath(); c.moveTo(61.5,108); c.lineTo(61.5,135); c.moveTo(48,121.5); c.lineTo(75,121.5); c.moveTo(140.5,108); c.lineTo(140.5,135); c.moveTo(127,121.5); c.lineTo(154,121.5); c.stroke();
+ c.fillStyle="#68b88a"; c.fillRect(0,174,200,26);
+ c.fillStyle="#4e9b70"; c.beginPath(); c.arc(25,165,17,0,Math.PI*2); c.arc(177,164,21,0,Math.PI*2); c.fill();
+}
+
+// 3. Flower
+{
+ const c=get("flower"); bg(c,"#fff2f5");
+ c.strokeStyle="#4d9b72"; c.lineWidth=9; c.lineCap="round"; c.beginPath(); c.moveTo(100,105); c.quadraticCurveTo(96,145,103,183); c.stroke();
+ c.fillStyle="#69b887"; c.beginPath(); c.ellipse(76,150,27,12,-.5,0,Math.PI*2); c.ellipse(126,165,27,12,.5,0,Math.PI*2); c.fill();
+ c.fillStyle="#f17da3";
+ for(let i=0;i<8;i++){let a=i*Math.PI/4; c.beginPath(); c.ellipse(100+Math.cos(a)*35,76+Math.sin(a)*35,19,27,a,0,Math.PI*2); c.fill();}
+ c.fillStyle="#f6c94e"; c.beginPath(); c.arc(100,76,23,0,Math.PI*2); c.fill();
+ c.fillStyle="#fff0a8"; c.beginPath(); c.arc(92,68,6,0,Math.PI*2); c.fill();
+}
+
+// 4. Goldfish
+{
+ const c=get("fish"); bg(c,"#e8f8fc");
+ c.fillStyle="#b9e6ee"; for(let i=0;i<5;i++){c.beginPath();c.arc(28+i*39,174-(i%2)*12,5,0,Math.PI*2);c.fill();}
+ c.fillStyle="#f7a94f"; c.beginPath(); c.moveTo(63,100); c.quadraticCurveTo(91,45,147,78); c.quadraticCurveTo(177,101,147,127); c.quadraticCurveTo(92,157,63,100); c.fill();
+ c.fillStyle="#ed8052"; c.beginPath(); c.moveTo(65,100); c.lineTo(25,67); c.quadraticCurveTo(37,101,25,135); c.closePath(); c.fill();
+ c.fillStyle="#f6c65b"; c.beginPath(); c.moveTo(104,72); c.quadraticCurveTo(115,42,139,64); c.closePath(); c.fill();
+ c.fillStyle="#f6c65b"; c.beginPath(); c.moveTo(105,132); c.quadraticCurveTo(118,157,140,137); c.closePath(); c.fill();
+ c.fillStyle="#fff"; c.beginPath(); c.arc(139,91,10,0,Math.PI*2); c.fill(); c.fillStyle="#263b52"; c.beginPath(); c.arc(142,91,5,0,Math.PI*2); c.fill();
+ c.strokeStyle="#d86f4c"; c.lineWidth=3; c.beginPath(); c.arc(120,108,10,.2,1.6); c.stroke();
+ c.fillStyle="#fff"; c.beginPath(); c.arc(48,35,10,0,Math.PI*2); c.arc(27,57,5,0,Math.PI*2); c.fill();
+}
+
+// 5. Friendly robot
+{
+ const c=get("robot"); bg(c,"#f0edff");
+ c.strokeStyle="#7b77b8"; c.lineWidth=7; c.lineCap="round"; c.beginPath(); c.moveTo(100,39); c.lineTo(100,23); c.stroke();
+ c.fillStyle="#f08b8b"; c.beginPath(); c.arc(100,19,8,0,Math.PI*2); c.fill();
+ c.fillStyle="#8ab9d8"; c.beginPath(); c.roundRect(48,48,104,83,17); c.fill();
+ c.fillStyle="#354765"; c.beginPath(); c.roundRect(62,66,76,42,10); c.fill();
+ c.fillStyle="#a9e7d3"; c.beginPath(); c.arc(82,86,7,0,Math.PI*2); c.arc(118,86,7,0,Math.PI*2); c.fill();
+ c.strokeStyle="#a9e7d3"; c.lineWidth=3; c.beginPath(); c.arc(100,91,10,.25,Math.PI-.25); c.stroke();
+ c.fillStyle="#8ab9d8"; c.fillRect(84,132,32,17);
+ c.fillStyle="#f08b8b"; c.beginPath(); c.roundRect(59,146,82,20,8); c.fill();
+ c.strokeStyle="#8ab9d8"; c.lineWidth=8; c.beginPath(); c.moveTo(48,73); c.lineTo(32,91); c.lineTo(32,119); c.moveTo(152,73); c.lineTo(168,91); c.lineTo(168,119); c.stroke();
+ c.fillStyle="#f6c65b"; c.beginPath(); c.arc(32,123,8,0,Math.PI*2); c.arc(168,123,8,0,Math.PI*2); c.fill();
+}
+
+// 6. Mountain view
+{
+ const c=get("mountain"); bg(c,"#dff2ff");
+ c.fillStyle="#f7ce69"; c.beginPath(); c.arc(151,45,23,0,Math.PI*2); c.fill();
+ c.fillStyle="#9bbbd0"; c.beginPath(); c.moveTo(0,145); c.lineTo(65,51); c.lineTo(131,145); c.closePath(); c.fill();
+ c.fillStyle="#fff"; c.beginPath(); c.moveTo(45,80); c.lineTo(65,51); c.lineTo(85,80); c.lineTo(70,75); c.lineTo(62,85); c.lineTo(55,75); c.closePath(); c.fill();
+ c.fillStyle="#6f9f9a"; c.beginPath(); c.moveTo(75,151); c.lineTo(142,68); c.lineTo(205,151); c.closePath(); c.fill();
+ c.fillStyle="#fff"; c.beginPath(); c.moveTo(124,91); c.lineTo(142,68); c.lineTo(161,94); c.lineTo(145,87); c.lineTo(137,98); c.closePath(); c.fill();
+ c.fillStyle="#78bd91"; c.beginPath(); c.moveTo(0,145); c.quadraticCurveTo(75,121,200,149); c.lineTo(200,200); c.lineTo(0,200); c.closePath(); c.fill();
+ c.fillStyle="#4e9975"; for(let i=0;i<7;i++){let x=14+i*29; c.beginPath();c.moveTo(x,174);c.lineTo(x+12,143-(i%3)*9);c.lineTo(x+24,174);c.fill();}
+}
+
+// 7. Hot air balloon
+{
+ const c=get("balloon"); bg(c,"#fff3e6");
+ c.fillStyle="#f4bd62"; c.beginPath(); c.arc(42,39,17,0,Math.PI*2); c.fill();
+ const grad=c.createLinearGradient(55,25,145,140); grad.addColorStop(0,"#f17f83"); grad.addColorStop(1,"#826ec4");
+ c.fillStyle=grad; c.beginPath(); c.moveTo(100,24); c.bezierCurveTo(28,24,36,111,100,137); c.bezierCurveTo(164,111,172,24,100,24); c.fill();
+ c.strokeStyle="#fff0dc"; c.lineWidth=5; c.beginPath(); c.moveTo(77,39);c.quadraticCurveTo(60,83,91,129);c.moveTo(123,39);c.quadraticCurveTo(140,83,109,129);c.stroke();
+ c.strokeStyle="#9b6b54"; c.lineWidth=2; c.beginPath(); c.moveTo(81,129);c.lineTo(86,154);c.moveTo(119,129);c.lineTo(114,154);c.stroke();
+ c.fillStyle="#a96f4e"; c.beginPath(); c.roundRect(79,151,42,27,5); c.fill();
+ c.strokeStyle="#f3d5a8"; c.lineWidth=2; c.strokeRect(85,157,30,15);
+}
+
+// 8. Cactus
+{
+ const c=get("cactus"); bg(c,"#fff5e8");
+ c.fillStyle="#f4ce79"; c.beginPath(); c.ellipse(100,177,66,12,0,0,Math.PI*2); c.fill();
+ c.fillStyle="#4fa77e"; c.beginPath(); c.roundRect(78,51,44,119,19); c.roundRect(48,88,35,18,9); c.roundRect(48,67,18,40,9); c.roundRect(117,103,35,18,9); c.roundRect(134,82,18,40,9); c.fill();
+ c.strokeStyle="#d5f0d9"; c.lineWidth=2; for(let y=68;y<155;y+=15){c.beginPath();c.moveTo(91,y);c.lineTo(91,y+6);c.moveTo(109,y);c.lineTo(109,y+6);c.stroke();}
+ c.fillStyle="#f28c9a"; c.beginPath(); for(let i=0;i<5;i++){let a=i*Math.PI*2/5-Math.PI/2;c.arc(100+Math.cos(a)*12,48+Math.sin(a)*12,7,0,Math.PI*2);} c.fill();
+ c.fillStyle="#f4ce79"; c.beginPath(); c.arc(100,48,6,0,Math.PI*2); c.fill();
+}
+</script>
+</body>
+</html>
