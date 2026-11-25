@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Learning Task 6.2 - Animated SVG</title>
+    <style>
+        body {
+            background-color: #fff9e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        svg {
+            background-color: white;
+            border: 2px solid #f4c542;
+            border-radius: 15px;
+        }
+
+        .bee {
+            animation: bounce 2s ease-in-out infinite;
+            transform-origin: center;
+        }
+
+        .wing {
+            animation: flap 0.3s ease-in-out infinite alternate;
+            transform-origin: center;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-25px);
+            }
+        }
+
+        @keyframes flap {
+            from {
+                transform: rotate(-15deg);
+            }
+            to {
+                transform: rotate(15deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<svg width="300" height="300" viewBox="0 0 300 300">
+
+    <!-- Sun -->
+    <circle cx="150" cy="150" r="110" fill="#fff3c4"/>
+
+    <!-- Bee -->
+    <g class="bee">
+
+        <!-- Wings -->
+        <ellipse class="wing" cx="115" cy="105"
+                 rx="25" ry="15"
+                 fill="#b9e7f5"
+                 opacity="0.8"/>
+
+        <ellipse class="wing" cx="175" cy="105"
+                 rx="25" ry="15"
+                 fill="#b9e7f5"
+                 opacity="0.8"/>
+
+        <!-- Body -->
+        <ellipse cx="145" cy="155"
+                 rx="65" ry="45"
+                 fill="#ffcf33"
+                 stroke="#333"
+                 stroke-width="3"/>
+
+        <!-- Stripes -->
+        <path d="M120 115 Q105 155 120 195"
+              stroke="#333" stroke-width="13"
+              fill="none"/>
+
+        <path d="M165 113 Q150 155 165 197"
+              stroke="#333" stroke-width="13"
+              fill="none"/>
+
+        <!-- Head -->
+        <circle cx="205" cy="145" r="32"
+                fill="#ffcf33"
+                stroke="#333"
+                stroke-width="3"/>
+
+        <!-- Eyes -->
+        <circle cx="215" cy="137" r="4" fill="#333"/>
+        <circle cx="235" cy="137" r="4" fill="#333"/>
+
+        <!-- Smile -->
+        <path d="M215 153 Q225 163 235 153"
+              stroke="#333"
+              stroke-width="2"
+              fill="none"
+              stroke-linecap="round"/>
+
+        <!-- Antennas -->
+        <path d="M195 116 Q185 95 175 100"
+              stroke="#333" stroke-width="3"
+              fill="none"/>
+
+        <path d="M215 114 Q220 92 230 98"
+              stroke="#333" stroke-width="3"
+              fill="none"/>
+
+        <circle cx="175" cy="100" r="4" fill="#333"/>
+        <circle cx="230" cy="98" r="4" fill="#333"/>
+
+        <!-- Stinger -->
+        <path d="M80 155 L65 145 L65 165 Z"
+              fill="#333"/>
+
+    </g>
+
+    <!-- Floating dots -->
+    <circle cx="65" cy="85" r="5" fill="#f4c542">
+        <animate attributeName="cy"
+                 values="85;70;85"
+                 dur="2s"
+                 repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="240" cy="220" r="5" fill="#f4c542">
+        <animate attributeName="cy"
+                 values="220;205;220"
+                 dur="2s"
+                 repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Text -->
+    <text x="150" y="265"
+          text-anchor="middle"
+          font-size="16"
+          font-family="Arial"
+          font-weight="bold"
+          fill="#444">
+        Happy Little Bee!
+    </text>
+
+</svg>
+
+</body>
+</html>
