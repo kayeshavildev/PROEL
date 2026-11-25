@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Text Art</title>
+
+    <style>
+        body {
+            margin: 0;
+            background-color: #f4f1ec;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .artboard {
+            background-color: white;
+            width: 900px;
+            max-width: 100%;
+        }
+
+        svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="artboard">
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="900" height="780"
+     viewBox="0 0 900 780">
+
+    <defs>
+        <!-- Butterfly Wing Paths -->
+        <path id="leftUpper"
+        d="M444,374 C365,190 160,175 125,305 C96,410 244,445 444,391"/>
+
+        <path id="rightUpper"
+        d="M456,374 C535,190 740,175 775,305 C804,410 656,445 456,391"/>
+
+        <path id="leftLower"
+        d="M444,400 C315,425 195,590 282,650 C350,696 418,545 449,411"/>
+
+        <path id="rightLower"
+        d="M456,400 C585,425 705,590 618,650 C550,696 482,545 451,411"/>
+
+        <path id="leftInner"
+        d="M440,382 C345,285 220,275 177,335"/>
+
+        <path id="rightInner"
+        d="M460,382 C555,285 680,275 723,335"/>
+    </defs>
+
+    <rect width="900" height="780" fill="white"/>
+
+    <!-- Heading -->
+    <text x="450" y="92"
+          text-anchor="middle"
+          font-size="17"
+          letter-spacing="7"
+          fill="#9b7acb">
+        A LITTLE REMINDER
+    </text>
+
+    <text x="450" y="145"
+          text-anchor="middle"
+          font-family="Georgia"
+          font-size="39"
+          font-weight="bold"
+          fill="#503b78">
+        LET YOUR DREAMS
+    </text>
+
+    <text x="450" y="190"
+          text-anchor="middle"
+          font-family="Georgia"
+          font-size="39"
+          font-style="italic"
+          fill="#d46c8c">
+        TAKE FLIGHT
+    </text>
+
+    <!-- Upper Left Wing -->
+    <g fill="#7654ad" font-family="Georgia">
+        <text font-size="17" letter-spacing="1.5">
+            <textPath xlink:href="#leftUpper">
+                BELIEVE IN YOURSELF • KEEP MOVING FORWARD • DREAM WITHOUT FEAR •
+            </textPath>
+        </text>
+
+        <text font-size="14">
+            <textPath xlink:href="#leftInner">
+                HOPE • COURAGE • KINDNESS • POSSIBILITY •
+            </textPath>
+        </text>
+    </g>
+
+    <!-- Upper Right Wing -->
+    <g fill="#7654ad" font-family="Georgia">
+        <text font-size="17" letter-spacing="1.5">
+            <textPath xlink:href="#rightUpper">
+                BELIEVE IN YOURSELF • KEEP MOVING FORWARD • DREAM WITHOUT FEAR •
+            </textPath>
+        </text>
+
+        <text font-size="14">
+            <textPath xlink:href="#rightInner">
+                HOPE • COURAGE • KINDNESS • POSSIBILITY •
+            </textPath>
+        </text>
+    </g>
+
+    <!-- Lower Wings -->
+    <g fill="#d46c8c" font-family="Arial">
+        <text font-size="15" letter-spacing="1">
+            <textPath xlink:href="#leftLower">
+                GROW THROUGH WHAT YOU GO THROUGH • TRUST THE JOURNEY •
+            </textPath>
+        </text>
+
+        <text font-size="15" letter-spacing="1">
+            <textPath xlink:href="#rightLower">
+                GROW THROUGH WHAT YOU GO THROUGH • TRUST THE JOURNEY •
+            </textPath>
+        </text>
+    </g>
+
+    <!-- Butterfly Antennae -->
+    <g fill="none" stroke="#503b78"
+       stroke-width="5" stroke-linecap="round">
+        <path d="M450 350 C425 320 418 300 423 280"/>
+        <path d="M450 350 C475 320 482 300 477 280"/>
+    </g>
+
+    <circle cx="423" cy="278" r="5" fill="#d46c8c"/>
+    <circle cx="477" cy="278" r="5" fill="#d46c8c"/>
+
+    <!-- Butterfly Body -->
+    <ellipse cx="450" cy="405"
+             rx="13" ry="70"
+             fill="#d46c8c"/>
+
+    <path d="M450 360
+             C432 385 433 426 450 450
+             C467 426 468 385 450 360Z"
+          fill="#7654ad"/>
+
+    <!-- Main Quotation -->
+    <text x="450" y="510"
+          text-anchor="middle"
+          font-family="Georgia"
+          font-size="35"
+          font-style="italic"
+          fill="#503b78">
+        "The future is yours."
+    </text>
+
+    <text x="450" y="548"
+          text-anchor="middle"
+          font-family="Arial"
+          font-size="14"
+          letter-spacing="3"
+          fill="#9b7acb">
+        DREAM • BELIEVE • BECOME
+    </text>
+
+    <!-- Footer -->
+    <path d="M315 585 Q450 625 585 585"
+          fill="none"
+          stroke="#ead8e5"
+          stroke-width="2"/>
+
+    <text x="450" y="650"
+          text-anchor="middle"
+          font-family="Arial"
+          font-size="13"
+          letter-spacing="2"
+          fill="#a18da9">
+        LET YOUR WINGS CARRY YOU
+    </text>
+
+</svg>
+
+</div>
+
+</body>
+</html>
